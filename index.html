@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+
+      <div id="fb-root"></div>
+
+<script type="text/javascript">
+function flipfunction()
+{
+window.contextSource.translate(640, 0);
+window.contextSource.scale(-1, 1);
+
+}
+</script>
+
+
+        <div id="container">
+
+        <video id="webcam" autoplay width="640" height="480"></video>
+        <canvas id="canvassource" width="640" height="480"></canvas>
+
+        <canvas style="display:none;" id="canvas" width="640" height="480"></canvas>
+
+        <div id="texte">
+        <h3 id="vol">
+        -
+        </h3> <h2 id="lefttext">Use your left hand to control the volume </h2>
+        <h2 id="righttext">Use your right hand to control the pitch  </h2>
+        <h3 id="chord">
+        -
+        </h3>
+
+
+        <div>
+
+        <h2>or vice versa<h2>
+        <p>Use latest desktop google chrome, turn your webcam and speaker on </br> and turn down your speaker's volume into adequate level</p>
+        </div>
+
+
+
+
+<section class="settings">
+  <h4>This is the place where you can flip your screen if it is flipped or change your wave form to make a different sound.</h4>
+ <button onclick="flipfunction()"> Click here to flip screen back if your screen is flipped </button></br></br>
+ <div class="styled-select">
+  Select Wave Form
+  <select id="selectwave">
+      <option value="0" selected>Sine</option>
+      <option value="1">Square</option>
+      <option value="2">Sawtooth</option>
+      <option value="3">Triangle</option>
+  </select>
+</div>
+</section>
+
+
+
+
+
+        <script src="js/jquery.js"></script>
+        <script src="js/theremin.js"></script>
+
+     </body>
+
+</html>
