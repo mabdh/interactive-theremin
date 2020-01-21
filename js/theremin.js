@@ -211,6 +211,11 @@ function loadSounds() {
     //S(c); // oscillator type
     //alert("Turn your volume down to the minimum value first because this theremin will produce sound at maximum level at the first time it is started");
     oscillator.start(1);
+    if(soundContext.state === 'running') {
+        muteButton.textContent = 'Mute';
+    } else if(soundContext.state === 'suspended') {
+        muteButton.textContent = 'Unmute';
+    }
 }
 
 function playSound(e) {
