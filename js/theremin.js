@@ -1,5 +1,6 @@
 
-var video = document.querySelector('video');
+const video = document.querySelector('video');
+const muteButton = document.getElementById('mute-button')
 var notesPos = [0, 82, 159, 238, 313, 390, 468, 544];
 var noteY = [420, 360, 300, 240, 180, 120, 60, 0, 420, 360, 300, 240, 180, 120, 60, 0];
 var timeOut, lastImageData;
@@ -10,7 +11,7 @@ var contextDest;
 var soundContext,oscillator,gainOscillator;
 var notes = [];
 var osctype = ["sine", "square", "sawtooth", "triangle"];
-
+const mediaStream = new MediaStream();
 // document.getElementById('snapshot').onclick = function() {
 //     //var video = document.querySelector('video');
 //     //var canvas = document.getElementById('canvas');
@@ -58,7 +59,8 @@ contextSource.scale(-1, 1);
                 //get the video tag
                 //var video = document.querySelector('video');
                 //turn the stream into a magic URL
-                video.src = window.URL.createObjectURL(stream);
+                video.srcObject = stream
+                // window.URL.createObjectURL(stream);
             },
             function(e) {
                 console.log("error happened");
@@ -70,6 +72,17 @@ contextSource.scale(-1, 1);
 
 }
 
+function doMute(){
+    if(soundContext.state === 'running') {
+        soundContext.suspend().then(function() {
+          muteButton.textContent = 'Unmute';
+        });
+    } else if(soundContext.state === 'suspended') {
+        soundContext.resume().then(function() {
+            muteButton.textContent = 'Mute';
+    });  
+    }
+}
 
 // Draw video to canvas
 function drawVideo() {
